@@ -14,9 +14,6 @@ const titleClickHandler = function(){
     const articleSelector = clickedElement.getAttribute('href');
     const targetArticle = document.querySelector(articleSelector);
 
-    console.log(targetArticle);
-    
-
     const activeLinks = document.querySelectorAll('.titles a.active');
     const activeArticles = document.querySelectorAll('.post');
 
@@ -29,8 +26,6 @@ const titleClickHandler = function(){
     }
 
     clickedElement.classList.add('active')
-    console.log('clickedElement:', clickedElement);
-
     targetArticle.classList.add('active');
   }
 
