@@ -12,7 +12,8 @@ const titleClickHandler = function(){
 
     const clickedElement = this;
     const articleSelector = clickedElement.getAttribute('href');
-
+    const targetArticle = document.querySelector('.post');
+    console.log(targetArticle);
     
     
     const activeLinks = document.querySelectorAll('.titles a.active');
