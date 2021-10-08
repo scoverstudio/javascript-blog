@@ -12,10 +12,11 @@ const titleClickHandler = function(){
 
     const clickedElement = this;
     const articleSelector = clickedElement.getAttribute('href');
-    const targetArticle = document.querySelector('.post');
+    const targetArticle = document.querySelector(articleSelector);
+
     console.log(targetArticle);
     
-    
+
     const activeLinks = document.querySelectorAll('.titles a.active');
     const activeArticles = document.querySelectorAll('.post');
 
@@ -27,10 +28,10 @@ const titleClickHandler = function(){
         activeArticle.classList.remove('active');
     }
 
-    /* [IN PROGRESS] add class 'active' to the clicked link */
     clickedElement.classList.add('active')
     console.log('clickedElement:', clickedElement);
 
+    targetArticle.classList.add('active');
   }
 
 
