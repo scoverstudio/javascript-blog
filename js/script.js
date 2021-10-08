@@ -8,7 +8,12 @@
 const links = document.querySelectorAll('.titles a');
 
 const titleClickHandler = function(){
-    console.log('Link was clicked!');
+    event.preventDefault();
+
+    const clickedElement = this;
+    const articleSelector = clickedElement.getAttribute('href');
+
+    
     
     const activeLinks = document.querySelectorAll('.titles a.active');
     const activeArticles = document.querySelectorAll('.post');
@@ -20,8 +25,12 @@ const titleClickHandler = function(){
     for(let activeArticle of activeArticles){
         activeArticle.classList.remove('active');
     }
-  }
 
+    /* [IN PROGRESS] add class 'active' to the clicked link */
+    clickedElement.classList.add('active')
+    console.log('clickedElement:', clickedElement);
+
+  }
 
 
   for(let link of links){
