@@ -1,3 +1,4 @@
+{
 'use strict'
 
 // document.getElementById('test-button').addEventListener('click', function(){
@@ -33,3 +34,37 @@ const titleClickHandler = function(){
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+
+
+
+  const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+  const titleList = document.querySelector(optTitleListSelector);
+
+  const clearMessages = function() {
+    titleList.innerHTML = '';
+  }
+
+  const generateTitleLinks = function() {
+    clearMessages();
+
+
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    for(let article of articles){
+      const articleId = article.getAttribute('id');
+      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      titleList.insertAdjacentHTML("beforeend", linkHTML);
+    }
+
+
+
+  }
+
+
+
+
+  generateTitleLinks();
+}
