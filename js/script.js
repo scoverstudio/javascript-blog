@@ -6,6 +6,7 @@
 //     console.log('links:', links);
 //   });
 
+
 const links = document.querySelectorAll('.titles a');
 
 const titleClickHandler = function(){
@@ -49,18 +50,18 @@ const titleClickHandler = function(){
   const generateTitleLinks = function() {
     clearMessages();
 
-
     const articles = document.querySelectorAll(optArticleSelector);
+    let html = '';
 
     for(let article of articles){
       const articleId = article.getAttribute('id');
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-      titleList.insertAdjacentHTML("beforeend", linkHTML);
+      html = html + linkHTML;
+
     }
 
-
-
+    titleList.innerHTML = html;
   }
 
 
