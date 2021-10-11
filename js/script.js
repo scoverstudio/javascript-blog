@@ -20,6 +20,7 @@ const titleClickHandler = function(e){
 
     const activeLinks = document.querySelectorAll('.titles a.active');
     const activeArticles = document.querySelectorAll('.post');
+    const postContent = document.querySelector('.post-content')
 
     for(let activeLink of activeLinks){
         activeLink.classList.remove('active');
@@ -31,6 +32,7 @@ const titleClickHandler = function(e){
 
     clickedElement.classList.add('active')
     targetArticle.classList.add('active');
+
   }
 
 
