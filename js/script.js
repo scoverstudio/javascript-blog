@@ -43,7 +43,6 @@
     clearMessages();
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
     let html = '';
-    console.log(customSelector);
 
     for (let article of articles) {
       const articleId = article.getAttribute('id');
@@ -74,7 +73,6 @@
       const articleTagsArray = articleTags.split(' ');
 
       for (let tag of articleTagsArray) {
-        console.log(tag);
         const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</li>';
         html = html + linkHTML;
       }
@@ -126,7 +124,6 @@
       let html = '';
       const articleAuthor = article.getAttribute('data-author');
 
-      console.log(articleAuthor);
       const linkHTML = '<a href="#tag-' + articleAuthor + '">';
       html = html + linkHTML;
 
