@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 {
   'use strict';
 
@@ -5,6 +6,7 @@
   const optTitleSelector = '.post-title';
   const optTitleListSelector = '.titles';
   const optArticleTagsSelector = '.post-tags .list';
+  const optArticleAuthorsSelector = '.post-author';
 
 
   const titleClickHandler = function (e) {
@@ -62,11 +64,9 @@
 
   generateTitleLinks();
 
-  // eslint-disable-next-line no-inner-declarations
   function generateTags() {
-    /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
-    /* START LOOP: for every article: */
+
     for (let article of articles) {
       const tagsWrapper = article.querySelectorAll(optArticleTagsSelector);
       let html = '';
@@ -84,7 +84,7 @@
   generateTags();
 
 
-  // eslint-disable-next-line no-inner-declarations
+
   function tagClickHandler(event) {
     event.preventDefault();
 
@@ -106,16 +106,62 @@
     generateTitleLinks('[data-tags~="' + tag + '"]');
   }
 
-  // eslint-disable-next-line no-inner-declarations
+
   function addClickListenersToTags() {
-    /* find all links to tags */
 
-    /* START LOOP: for each link */
+    const links = document.querySelectorAll('.post-tags .list li a');
 
-    /* add tagClickHandler as event listener for that link */
+    for (let link of links) {
+      link.addEventListener('click', tagClickHandler);
+    }
+  }
+  addClickListenersToTags();
 
-    /* END LOOP: for each link */
+
+  function generateAuthors() {
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    for (let article of articles) {
+      const authorsWrapper = article.querySelectorAll(optArticleAuthorsSelector);
+      let html = '';
+      const articleAuthor = article.getAttribute('data-author');
+
+      console.log(articleAuthor);
+      const linkHTML = '<a href="#tag-' + articleAuthor + '">';
+      html = html + linkHTML;
+
+      authorsWrapper.innerHTML = html;
+    }
+  }
+  generateAuthors();
+
+
+  function authorClickHandler(event) {
+    event.preventDefault();
+
+    const clickedElement = this;
+    const href = clickedElement.getAttribute('href');
+    const author = href.replace('#tag-', '');
+    const activeAuthors = author.querySelectorAll('a.active[href^="#tag-"]');
+
+    for (let activeAuthor of activeAuthors) {
+      activeAuthor.classList.remove('active');
+    }
+
+    const equalAuthors = author.querySelectorAll('a[href="' + href + '"]');
+
+    for (let equalAuthor of equalAuthors) {
+      equalAuthor.classList.add('active');
+    }
+    generateTitleLinks('[data-tags="' + author + '"]');
   }
 
-  addClickListenersToTags();
+  function addClickListenersToAuthors() {
+    const links = document.querySelectorAll('.post-author a');
+
+    for (let link of links) {
+      link.addEventListener('click', authorClickHandler);
+    }
+  }
+  addClickListenersToAuthors();
 }
