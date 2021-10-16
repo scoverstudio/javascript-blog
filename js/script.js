@@ -123,15 +123,14 @@
     const articles = document.querySelectorAll(optArticleSelector);
 
     for (let article of articles) {
+      const authorsWrapper = article.querySelector(optArticleAuthorsSelector);
       let html = '';
       const articleAuthor = article.getAttribute('data-author');
-      const authorsWrapper = article.querySelector(optArticleAuthorsSelector);
 
       const linkHTML = '<a href="#tag-' + articleAuthor + '">' + articleAuthor + '</a>';
       html = html + linkHTML;
 
       authorsWrapper.innerHTML = html;
-      console.log(authorsWrapper);
     }
   }
   generateAuthors();
