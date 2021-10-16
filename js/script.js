@@ -153,7 +153,7 @@
     for (let equalAuthor of equalAuthors) {
       equalAuthor.classList.add('active');
     }
-    generateTitleLinks('[data-tags="' + author + '"]');
+    generateTitleLinks('[data-author="' + author + '"]');
   }
 
   function addClickListenersToAuthors() {
