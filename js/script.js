@@ -4,6 +4,7 @@
   const optArticleSelector = '.post';
   const optTitleSelector = '.post-title';
   const optTitleListSelector = '.titles';
+  const optArticleTagsSelector = '.post-tags .list';
 
 
   const titleClickHandler = function (e) {
@@ -59,4 +60,35 @@
   };
 
   generateTitleLinks();
+
+  // eslint-disable-next-line no-inner-declarations
+  function generateTags() {
+    /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+    /* START LOOP: for every article: */
+    for (let article of articles) {
+      const tagsWrapper = document.querySelectorAll('.post-tags');
+      let html = '';
+      const tagsAttributes = article.getAttribute('data-tags');
+
+      console.log(tagsAttributes.split(' '));
+    };
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+    /* generate HTML of the link */
+
+    /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+    /* END LOOP: for every article: */
+  }
+
+  generateTags();
+
 }
