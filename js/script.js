@@ -79,12 +79,42 @@
       }
       tagsWrapper.innerHTML = html;
     }
-
-    /* insert HTML of all the links into the tags wrapper */
-
-    /* END LOOP: for every article: */
   }
-
   generateTags();
 
+
+  // eslint-disable-next-line no-inner-declarations
+  function tagClickHandler(event) {
+    event.preventDefault();
+
+    const clickedElement = this;
+    const href = clickedElement.getAttribute('href');
+    const tag = href.replace('#tag-', '');
+    const activeTags = tag.querySelectorAll('a.active[href^="#tag-"]');
+
+    for (let activeTag of activeTags) {
+      activeTag.classList.remove('active');
+    }
+
+    const equalTags = tag.querySelectorAll('a[href="' + href + '"]');
+
+    for (let equalTag of equalTags) {
+      equalTag.classList.add('active');
+    }
+    /* execute function "generateTitleLinks" with article selector as argument */
+    generateTitleLinks('[data-tags~="' + tag + '"]');
+  }
+
+  // eslint-disable-next-line no-inner-declarations
+  function addClickListenersToTags() {
+    /* find all links to tags */
+
+    /* START LOOP: for each link */
+
+    /* add tagClickHandler as event listener for that link */
+
+    /* END LOOP: for each link */
+  }
+
+  addClickListenersToTags();
 }
