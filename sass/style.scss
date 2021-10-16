@@ -10,13 +10,18 @@ $color-three: #46494C;
 $color-four: #4C5C68;
 $color-five: #1985A1;
 
-$font-logo: 'Sacramento', cursive;
-$font-header: 'Oswald', sans-serif;
-$font-text: 'Source Sans Pro', sans-serif;
+$font-logo: 'Sacramento',
+cursive;
+$font-header: 'Oswald',
+sans-serif;
+$font-text: 'Source Sans Pro',
+sans-serif;
 
 /* Global */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -39,6 +44,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -63,7 +69,8 @@ body {
   height: 120vh;
 }
 
-.sidebar, .posts {
+.sidebar,
+.posts {
   background: $color-four;
   color: $color-one;
   margin-right: 10px;
@@ -88,10 +95,12 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   .active {
     font-weight: bold;
   }
-  a{
+
+  a {
     color: $color-two;
   }
 }
@@ -132,8 +141,8 @@ body {
 
 .post-tags {
   display: flex;
+
   p {
     margin: 0 10px 0 0;
   }
 }
-
