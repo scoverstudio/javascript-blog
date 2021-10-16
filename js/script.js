@@ -37,10 +37,11 @@
     titleList.innerHTML = '';
   };
 
-  const generateTitleLinks = function () {
+  const generateTitleLinks = function (customSelector = '') {
     clearMessages();
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
     let html = '';
+    console.log(customSelector);
 
     for (let article of articles) {
       const articleId = article.getAttribute('id');
@@ -101,7 +102,7 @@
     for (let equalTag of equalTags) {
       equalTag.classList.add('active');
     }
-    /* execute function "generateTitleLinks" with article selector as argument */
+
     generateTitleLinks('[data-tags~="' + tag + '"]');
   }
 
