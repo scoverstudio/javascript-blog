@@ -67,22 +67,18 @@
     const articles = document.querySelectorAll(optArticleSelector);
     /* START LOOP: for every article: */
     for (let article of articles) {
-      const tagsWrapper = document.querySelectorAll('.post-tags');
+      const tagsWrapper = article.querySelectorAll(optArticleTagsSelector);
       let html = '';
-      const tagsAttributes = article.getAttribute('data-tags');
+      const articleTags = article.getAttribute('data-tags');
+      const articleTagsArray = articleTags.split(' ');
 
-      console.log(tagsAttributes.split(' '));
-    };
-
-    /* split tags into array */
-
-    /* START LOOP: for each tag */
-
-    /* generate HTML of the link */
-
-    /* add generated code to html variable */
-
-    /* END LOOP: for each tag */
+      for (let tag of articleTagsArray) {
+        console.log(tag);
+        const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</li>';
+        html = html + linkHTML;
+      }
+      tagsWrapper.innerHTML = html;
+    }
 
     /* insert HTML of all the links into the tags wrapper */
 
