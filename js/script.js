@@ -90,17 +90,18 @@
     const clickedElement = this;
     const href = clickedElement.getAttribute('href');
     const tag = href.replace('#tag-', '');
-    const activeTags = tag.querySelectorAll('a.active[href^="#tag-"]');
+    const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
 
     for (let activeTag of activeTags) {
       activeTag.classList.remove('active');
     }
 
-    const equalTags = tag.querySelectorAll('a[href="' + href + '"]');
+    const equalTags = document.querySelectorAll('a[href="' + href + '"]');
 
     for (let equalTag of equalTags) {
       equalTag.classList.add('active');
     }
+    console.log(equalTags);
 
     generateTitleLinks('[data-tags~="' + tag + '"]');
   }
@@ -142,13 +143,13 @@
     const clickedElement = this;
     const href = clickedElement.getAttribute('href');
     const author = href.replace('#tag-', '');
-    const activeAuthors = author.querySelectorAll('a.active[href^="#tag-"]');
+    const activeAuthors = document.querySelectorAll('a.active[href^="#tag-"]');
 
     for (let activeAuthor of activeAuthors) {
       activeAuthor.classList.remove('active');
     }
 
-    const equalAuthors = author.querySelectorAll('a[href="' + href + '"]');
+    const equalAuthors = document.querySelectorAll('a[href="' + href + '"]');
 
     for (let equalAuthor of equalAuthors) {
       equalAuthor.classList.add('active');
