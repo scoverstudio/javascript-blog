@@ -129,8 +129,6 @@
   }
   generateTags();
 
-
-
   function tagClickHandler(event) {
     event.preventDefault();
 
@@ -156,10 +154,15 @@
 
   function addClickListenersToTags() {
 
-    const links = document.querySelectorAll('li a');
+    const links = document.querySelectorAll('.post-tags .list li a');
 
     for (let link of links) {
       link.addEventListener('click', tagClickHandler);
+    }
+    const linksCloud = document.querySelectorAll('.tags li a');
+
+    for (let linkCloud of linksCloud) {
+      linkCloud.addEventListener('click', tagClickHandler);
     }
   }
   addClickListenersToTags();
