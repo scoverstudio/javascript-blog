@@ -7,6 +7,8 @@
   const optTitleListSelector = '.titles';
   const optArticleTagsSelector = '.post-tags .list';
   const optArticleAuthorsSelector = '.post-author';
+  const optCloudClassCount = '5';
+  const optCloudClassPrefix = 'tag-size-';
 
 
   const titleClickHandler = function (e) {
@@ -63,6 +65,29 @@
 
   generateTitleLinks();
 
+  function calculateTagsParams(tags) {
+    const params = {
+      max: 0,
+      min: 999999,
+    };
+    for (let tag in tags) {
+      if (tags[tag] > params.max) {
+        params.max = tags[tag];
+      }
+      if (tags[tag] < params.min) {
+        params.min = tags[tag];
+      }
+    }
+    return params;
+  }
+
+  function calculateTagClass(count, params) {
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+    const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+    return optCloudClassPrefix + classNumber;
+  }
 
   function generateTags() {
 
@@ -92,9 +117,12 @@
       }
       tagsWrapper.innerHTML = html;
       const tagList = document.querySelector('.tags');
+      const tagsParams = calculateTagsParams(allTags);
       let allTagsHTML = '';
       for (let tag in allTags) {
-        allTagsHTML += '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a><br>';
+        const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
+        allTagsHTML += '<li><a class="' + tagLinkHTML + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>';
+
       }
       tagList.innerHTML = allTagsHTML;
     }
@@ -107,6 +135,7 @@
     event.preventDefault();
 
     const clickedElement = this;
+    console.log(clickedElement);
     const href = clickedElement.getAttribute('href');
     const tag = href.replace('#tag-', '');
     const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
@@ -120,7 +149,6 @@
     for (let equalTag of equalTags) {
       equalTag.classList.add('active');
     }
-    console.log(equalTags);
 
     generateTitleLinks('[data-tags~="' + tag + '"]');
   }
@@ -128,7 +156,7 @@
 
   function addClickListenersToTags() {
 
-    const links = document.querySelectorAll('.post-tags .list li a');
+    const links = document.querySelectorAll('li a');
 
     for (let link of links) {
       link.addEventListener('click', tagClickHandler);
