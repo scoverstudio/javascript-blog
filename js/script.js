@@ -65,6 +65,14 @@
 
 
   function generateTags() {
+
+    {
+      cat: 3;
+      cactus: 1;
+      scissors: 2;
+    }
+
+    let allTags = {};
     const articles = document.querySelectorAll(optArticleSelector);
 
     for (let article of articles) {
@@ -76,8 +84,19 @@
       for (let tag of articleTagsArray) {
         const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</li>     ';
         html = html + linkHTML;
+        if (!allTags[tag]) {
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;
+        }
       }
       tagsWrapper.innerHTML = html;
+      const tagList = document.querySelector('.tags');
+      let allTagsHTML = '';
+      for (let tag in allTags) {
+        allTagsHTML += '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a><br>';
+      }
+      tagList.innerHTML = allTagsHTML;
     }
   }
   generateTags();
