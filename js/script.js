@@ -71,8 +71,9 @@
       link.addEventListener('click', titleClickHandler);
     }
 
-    const firstArticle = document.querySelector('.titles a:nth-child(1)');
-    firstArticle.classList.add('active');
+    // const firstArticle = document.querySelector('.titles a:nth-child(1)');
+    // firstArticle.classList.add('active');
+
   };
 
   generateTitleLinks();
@@ -197,15 +198,12 @@
 
       authorsWrapper.innerHTML = linkHTML;
 
-      const authorsArray = [articleAuthor];
-
-      for (let author of authorsArray) {
-        if (!allAuthors[author]) {
-          allAuthors[author] = 1;
-        } else {
-          allAuthors[author]++;
-        }
+      if (!allAuthors[articleAuthor]) {
+        allAuthors[articleAuthor] = 1;
+      } else {
+        allAuthors[articleAuthor]++;
       };
+
     }
     const authorList = document.querySelector(opts.authorsListSelector);
     const allAuthorsData = {
