@@ -40,7 +40,6 @@
 
     clickedElement.classList.add('active');
     targetArticle.classList.add('active');
-
   };
 
 
@@ -198,8 +197,9 @@
 
       authorsWrapper.innerHTML = linkHTML;
 
-      const articleAuthorsArray = articleAuthor.split(' ');
-      for (let author of articleAuthorsArray) {
+      const authorsArray = [articleAuthor];
+
+      for (let author of authorsArray) {
         if (!allAuthors[author]) {
           allAuthors[author] = 1;
         } else {
@@ -227,8 +227,8 @@
 
     const clickedElement = this;
     const href = clickedElement.getAttribute('href');
-    const author = href.replace('#tag-', '');
-    const activeAuthors = document.querySelectorAll('a.active[href^="#tag-"]');
+    const author = href.replace('#author-', '');
+    const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
 
     for (let activeAuthor of activeAuthors) {
       activeAuthor.classList.remove('active');
