@@ -71,9 +71,6 @@
       link.addEventListener('click', titleClickHandler);
     }
 
-    // const firstArticle = document.querySelector('.titles a:nth-child(1)');
-    // firstArticle.classList.add('active');
-
   };
 
   generateTitleLinks();
